@@ -4,23 +4,31 @@
 // sql to create table
 $sql = "DROP TABLE pelates ";
 
-$retval = mysql_query( $sql, $conn );
-if(! $retval )
+if($conn->query($sql) == TRUE)
 {
-  echo 'Could not delete table: ' . mysql_error() . '<br>';
-}else{
   echo 'Table deleted successfully\n'. '<br>';
+}else{
+  echo 'Could not delete table: ' . mysql_error() . '<br>';
 }
 
 // sql to create table
 $sql = "DROP TABLE categories";
 
-$retval = mysql_query( $sql, $conn );
-if(! $retval )
+if($conn->query($sql))
 {
-  echo 'Could not delete table: ' . mysql_error() . '<br>';
-}else{
   echo 'Table deleted successfully\n'. '<br>';
+}else{
+  echo 'Could not delete table: ' . mysql_error() . '<br>';
+}
+
+
+$sql = "DROP TABLE products";
+
+if($conn->query($sql))
+{
+  echo 'Table deleted successfully\n'. '<br>';
+}else{
+  echo 'Could not delete table: ' . mysql_error() . '<br>';
 }
 
 mysql_close($conn);

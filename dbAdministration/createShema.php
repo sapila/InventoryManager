@@ -2,7 +2,7 @@
 <?php
 // sql to create table
 $sql = "CREATE TABLE pelates (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id INT(6) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
     town VARCHAR(30) NOT NULL,
@@ -12,12 +12,12 @@ $sql = "CREATE TABLE pelates (
     doy VARCHAR(30) NOT NULL
 )";
 
-$retval = mysql_query( $sql, $conn );
-if(! $retval )
+
+if($conn->query($sql) == TRUE)
 {
-  echo 'Could not create table: ' . mysql_error() . '<br>';
-}else{
   echo 'Table created successfully\n'. '<br>';
+}else{
+  echo 'Could not create table: ' . mysql_error() . '<br>';
 }
 
 // sql to create table
@@ -26,17 +26,17 @@ $sql = "CREATE TABLE categories (
     name VARCHAR(30) NOT NULL
 )";
 
-$retval = mysql_query( $sql, $conn );
-if(! $retval )
+
+if($conn->query($sql) == TRUE)
 {
-   echo 'Could not create table: ' . mysql_error() . '<br>';
+  echo 'Table created successfully\n'. '<br>';
 }else{
-  echo 'Table created successfully\n' . '<br>';
+  echo 'Could not create table: ' . mysql_error() . '<br>';
 }
 
 
 // sql to create table
-$sql = "CREATE TABLE product (
+$sql = "CREATE TABLE products (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
@@ -47,12 +47,11 @@ $sql = "CREATE TABLE product (
     doy VARCHAR(30) NOT NULL
 )";
 
-$retval = mysql_query( $sql, $conn );
-if(! $retval )
+if($conn->query($sql) == TRUE)
 {
-  echo 'Could not create table: ' . mysql_error() . '<br>';
-}else{
   echo 'Table created successfully\n'. '<br>';
+}else{
+  echo 'Could not create table: ' . mysql_error() . '<br>';
 }
 
 mysql_close($conn);
