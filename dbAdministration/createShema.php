@@ -39,12 +39,13 @@ if($conn->query($sql) == TRUE)
 $sql = "CREATE TABLE products (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    town VARCHAR(30) NOT NULL,
-    address VARCHAR(30) NOT NULL,
-    phone VARCHAR(30) NOT NULL,
-    afm VARCHAR(30) NOT NULL,
-    doy VARCHAR(30) NOT NULL
+    boxprice DECIMAL(10, 2) NOT NULL,
+    itemprice DECIMAL(10, 2) NOT NULL,
+    categoryid INT(6) UNSIGNED NOT NULL,
+    boxreverse INT(6) NOT NULL,
+    itemreverse INT(6) NOT NULL,
+    boxtoitem INT(6) NOT NULL,
+    FOREIGN KEY (categoryid) REFERENCES categories(id)
 )";
 
 if($conn->query($sql) == TRUE)
