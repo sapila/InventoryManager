@@ -55,6 +55,21 @@ if($conn->query($sql) == TRUE)
   echo 'Could not create table: ' . mysql_error() . '<br>';
 }
 
+
+// sql to create table
+$sql = "CREATE TABLE openclose (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    opendate DATETIME DEFAULT NULL,
+    closedate DATETIME DEFAULT NULL
+)";
+
+if($conn->query($sql) == TRUE)
+{
+  echo 'Table created successfully\n'. '<br>';
+}else{
+  echo 'Could not create table: ' . mysql_error() . '<br>';
+}
+
 mysql_close($conn);
 
 ?>
