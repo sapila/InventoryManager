@@ -5,3 +5,28 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+.buttonList{
+	padding:10px;
+	border-left:5px solid #5588ff;
+	border-right:5px solid #5588ff;
+	border-bottom:1px solid #ffffff;
+	border-top:1px solid #ffffff;	
+	margin: 5px;
+}
+.buttonList:hover{
+	border-top:1px solid #5588ff;
+	border-bottom:1px solid #5588ff;
+}
+
+.productList{
+	padding:10px;
+	border-left:5px solid #5588ff;
+	border-right:5px solid #5588ff;
+	border-bottom:1px solid #ffffff;
+	border-top:1px solid #ffffff;	
+	margin: 5px;
+}
+.productList:hover{
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+}

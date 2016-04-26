@@ -51,7 +51,7 @@
 
               <button type="submit" class="btn btn-primary" name="closeInventory">Παραγγελία Πελάτη</button>
 
-              <button type="submit" class="btn btn-primary" name="closeInventory">Παραγγελία Αποθήκης</button>
+              <a href="inventoryOrder.php" class="btn btn-primary" >Παραγγελία Αποθήκης</a>
 
               <button type="submit" class="btn btn-primary" name="closeInventory">Έλεγχος Αποθήκης</button>
 
@@ -71,7 +71,7 @@
 
 
 
-<!-- <?php
+<?php
 $sql = " SELECT * FROM pelates ";
 $result = $conn->query($sql);
 //fetch tha data from the database
@@ -79,7 +79,7 @@ while($row = $result->fetch_assoc()) {
         echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
     }
 
-?> -->
+?> 
 
     </div><!-- /.container -->
 
