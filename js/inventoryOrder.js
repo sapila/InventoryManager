@@ -2,6 +2,8 @@ var app = angular.module('inventoryOrder', [])
 
 app.controller('inventoryOrderController',function($scope,$http) {
 
+	$scope.productOrder = [];
+
 	$scope.getCategories = function(){
 
 		$http.get('api/get/categories.php')
@@ -67,6 +69,55 @@ app.controller('inventoryOrderController',function($scope,$http) {
         prevTab($active);
          var $active = $('.wizard .nav-tabs li.active');
         prevTab($active);
+
+	}
+
+	$scope.gotoStep3 = function(index){
+
+		var index = 0;
+		for(index = 0 ; index < $scope.products.length ; index++ )
+		{
+			if($scope.products[index].boxcount > 0 || $scope.products[index].itemcount >0)
+			{
+				var order = {
+					product_id : $scope.products[index].id,
+					product_name : $scope.products[index].name,
+					boxcount : $scope.products[index].boxcount,
+					itemcount : $scope.products[index].itemcount
+				}
+
+				$scope.productOrder.push(order);
+			}
+
+		}
+
+		var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+	}
+
+
+	$scope.submitOrder = function(){
+
+		$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+
+		$http.post('api/post/submitSupplyOrder.php',$scope.productOrder )
+		.then(function(response){
+				if(response.data.error){
+					$scope.submitResultMessage = "Υπηρξε κάποιο πρόβλημα.Ελέγξτε ξανά την παρααγγελία."
+				}else{
+					$scope.submitResultMessage = "Η παρααγγελία αποθήκης ολοκληρώθηκε"
+				}
+				
+				var $active = $('.wizard .nav-tabs li.active');
+		        $active.next().removeClass('disabled');
+		        nextTab($active);
+
+			}, function(response){
+				console.log(JSON.stringify(response));
+			});
+
 
 	}
 

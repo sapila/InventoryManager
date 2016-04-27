@@ -57,6 +57,7 @@
 
             <form role="form">
                 <div class="tab-content">
+<!-- Step 1 -->
                     <div class="tab-pane active" role="tabpanel" id="step1">
                         <div class="buttonList" ng-click="categorySelection(category.id)" ng-repeat="category in categories">
 
@@ -64,6 +65,7 @@
                         </div>
                       
                     </div>
+<!-- Step 2 -->
                     <div class="tab-pane" role="tabpanel" id="step2">
                         <div class="productList"  ng-repeat="product in products">
                         <div class="row">
@@ -87,29 +89,33 @@
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary">Submit</button></li>
+                            <li><button ng-click="gotoStep3()" type="button" class="btn btn-primary">Καταχώρηση</button></li>
                         </ul>
                     </div>
+<!-- Step 3 -->
                     <div class="tab-pane" role="tabpanel" id="step3">
-                        <div class="productList"  ng-repeat="product in products">
+                        <div class="productList"  ng-repeat="product in productOrder">
                         <div class="row">
                             <div class="col-xs-6">
-                             {{product.name}} box: {{product.boxcount}}  item: {{product.itemcount}}
+                             <strong>{{product.product_name}} <br>
+                             		 boxes: {{product.boxcount}} <span style="padding-left:20px;"></span> items: {{product.itemcount}}</strong>
                             </div>
+                        </div> 
                         </div>
-                        </div>
-                        <button ng-click="gotoStep1()">Add more items <i class="glyphicon glyphicon-plus"></i></button>
+                        <br>
+                        <button ng-click="gotoStep1()" class="btn btn-default">Add more items <i class="glyphicon glyphicon-plus"></i></button>
+
                         <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                            <li><button ng-click="submitOrder()" type="button" class="btn btn-primary btn-info-full ">Καταχώρηση Παραγγελείας Αποθήκης</button></li>
                         </ul>
                     </div>
+<!-- Step 4 -->
                     <div class="tab-pane" role="tabpanel" id="complete">
-                        <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
+                    	<div class="container">
+	                        <h3>Complete</h3>
+	                        <p>{{submitResultMessage}}</p>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
             </form>
         </div>
