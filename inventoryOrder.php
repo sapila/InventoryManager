@@ -62,9 +62,7 @@
 
                          {{category.name}}
                         </div>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                        </ul>
+                      
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step2">
                         <div class="productList"  ng-repeat="product in products">
@@ -89,12 +87,18 @@
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            <li><button type="button" class="btn btn-primary">Submit</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
-                        <h3>Step 3</h3>
-                        <p>This is step 3</p>
+                        <div class="productList"  ng-repeat="product in products">
+                        <div class="row">
+                            <div class="col-xs-6">
+                             {{product.name}} box: {{product.boxcount}}  item: {{product.itemcount}}
+                            </div>
+                        </div>
+                        </div>
+                        <button ng-click="gotoStep1()">Add more items <i class="glyphicon glyphicon-plus"></i></button>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
                             <li><button type="button" class="btn btn-default next-step">Skip</button></li>

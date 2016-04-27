@@ -61,9 +61,18 @@ app.controller('inventoryOrderController',function($scope,$http) {
 
 	}
 
+	$scope.gotoStep1 = function(index){
+
+		 var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+         var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+	}
+
 	var init = function () {
 	   $scope.getCategories();
-	   $scope.aaa=0;
+	  
 	};
 
 	init();
