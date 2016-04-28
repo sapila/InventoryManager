@@ -31,6 +31,36 @@ if($conn->query($sql))
   echo 'Could not delete table: ' . mysql_error() . '<br>';
 }
 
+
+$sql = "DROP TABLE openclose";
+
+if($conn->query($sql))
+{
+  echo 'Table deleted successfully\n'. '<br>';
+}else{
+  echo 'Could not delete table: ' . mysql_error() . '<br>';
+}
+
+
+$sql = "DROP TABLE supplyOrder";
+
+if($conn->query($sql))
+{
+  echo 'Table deleted successfully\n'. '<br>';
+}else{
+  echo 'Could not delete table: ' . mysql_error() . '<br>';
+}
+
+
+$sql = "DROP TABLE supplyOrderProducts";
+
+if($conn->query($sql))
+{
+  echo 'Table deleted successfully\n'. '<br>';
+}else{
+  echo 'Could not delete table: ' . mysql_error() . '<br>';
+}
+
 mysql_close($conn);
 
 ?>

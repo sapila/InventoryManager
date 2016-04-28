@@ -31,6 +31,7 @@ $sql = " SELECT products.id ,
                 products.boxtoitem,
                 categories.name as category
           FROM products INNER JOIN categories ON products.categoryid = categories.id ";
+          
 $result = $conn->query($sql);
 //fetch tha data from the database
 while($row = $result->fetch_assoc()) {

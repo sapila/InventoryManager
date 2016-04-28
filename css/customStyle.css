@@ -30,3 +30,8 @@ body {
 	border-top:1px solid #ddd;
 	border-bottom:1px solid #ddd;
 }
+
+.center-block{
+	display: table;
+    margin: 0 auto;
+}

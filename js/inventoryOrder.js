@@ -105,9 +105,13 @@ app.controller('inventoryOrderController',function($scope,$http) {
 		$http.post('api/post/submitSupplyOrder.php',$scope.productOrder )
 		.then(function(response){
 				if(response.data.error){
+					$scope.resultSubmitIcon = "glyphicon glyphicon-remove";
+					$scope.resultSubmitIconColor = "red";
 					$scope.submitResultMessage = "Υπηρξε κάποιο πρόβλημα.Ελέγξτε ξανά την παρααγγελία."
 				}else{
-					$scope.submitResultMessage = "Η παρααγγελία αποθήκης ολοκληρώθηκε"
+					$scope.resultSubmitIcon = "glyphicon glyphicon-ok";
+					$scope.resultSubmitIconColor = "green";
+					$scope.submitResultMessage = "Η παραγγελία αποθήκης ολοκληρώθηκε"
 				}
 				
 				var $active = $('.wizard .nav-tabs li.active');

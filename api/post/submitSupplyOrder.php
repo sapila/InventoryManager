@@ -7,9 +7,30 @@ $postdata = file_get_contents("php://input");
 $order = json_decode($postdata);
 
 $errorFlag = false;
+
+$sql = "INSERT INTO supplyOrder (openclose_id,orderdate) VALUES (".$_SESSION['openclose_id'].",now())" ;
+
+
+   if (!$conn->query($sql) === TRUE) {
+        $errorFlag = true ;
+    }
+
+$supplyOrder_id = $conn->insert_id;
+
+
 foreach ($order as $product) {
 
-    $sql = "UPDATE products SET 
+	$sql = "INSERT INTO supplyOrderProducts (supplyOreder_id,product_id,boxreverse,itemreverse)
+			VALUES (".$supplyOrder_id.",".$product->product_id.",".$product->boxcount.",".$product->itemcount.")";
+
+
+   if (!$conn->query($sql) === TRUE) {
+        $errorFlag = true ;
+        echo mysql_error() . '<br>';
+    }
+
+
+   $sql = "UPDATE products SET 
     		boxreverse=boxreverse+".$product->boxcount.",
     		itemreverse=itemreverse +".$product->itemcount." 
     		WHERE id=".$product->product_id;

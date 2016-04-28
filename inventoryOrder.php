@@ -111,9 +111,11 @@
                     </div>
 <!-- Step 4 -->
                     <div class="tab-pane" role="tabpanel" id="complete">
-                    	<div class="container">
-	                        <h3>Complete</h3>
-	                        <p>{{submitResultMessage}}</p>
+                    	<div class="container text-center">
+                        
+	                        <i style="font-size: 30px;color:{{resultSubmitIconColor}};" class="{{resultSubmitIcon}}"></i>
+	                        <strong><p>{{submitResultMessage}}</p></strong>
+                          
                         </div>
                     </div>
                 </div>
