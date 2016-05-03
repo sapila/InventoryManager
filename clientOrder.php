@@ -6,7 +6,7 @@
 	  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <script src="js/jquery1.11.js"></script>
 <script src="js/angular.min.js"></script>
-<script src="js/inventoryOrder.js"></script>
+<script src="js/clientOrder.js"></script>
 
 </head>
 
@@ -14,7 +14,7 @@
 
 </script>
 
-<div class="container" ng-app="inventoryOrder" ng-controller="inventoryOrderController">
+<div class="container" ng-app="clientOrder" ng-controller="clientOrderController">
 	<div class="row">
 		<section>
         <div class="wizard">
@@ -59,46 +59,63 @@
                 <div class="tab-content">
 <!-- Step 1 -->
                     <div class="tab-pane active" role="tabpanel" id="step1">
-                        <div class="buttonList" ng-click="categorySelection(category.id)" ng-repeat="category in categories">
 
-                         {{category.name}}
+                       <div class="buttonList" ng-click="clientSelection(client.id)" ng-repeat="client in clients">
+
+                         {{client.firstname}}
+
                         </div>
-                      
+
+                       <li><button type="button" class="btn btn-default next-step">Next</button></li>
                     </div>
 <!-- Step 2 -->
                     <div class="tab-pane" role="tabpanel" id="step2">
-                        <div class="productList"  ng-repeat="product in products">
+                     <div class="buttonList" ng-click="categorySelection(category.id)" ng-repeat="category in categories">
+
+                         {{category.name}}
+                        </div>
+
+                      
+                    </div>
+<!-- Step 3 -->
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                       
+                          <div class="productList"  ng-repeat="product in products">
                         <div class="row">
-	                        <div class="col-xs-6">
-	                         {{product.name}} 
-	                        </div>
-	                        <div class="col-xs-6">
-	                        	Κουτιά</br>
-	                         	<button ng-click="decreaseProductBox($index)" ><i class="glyphicon glyphicon-minus"></i></button>
-	                         	<input min=0.0 type="number" style="width:50px;" ng-model="product.boxcount"/>
-	                         	<button ng-click="increaseProductBox($index)" ><i class="glyphicon glyphicon-plus"></i></button>
-	                         	</br>
-	                         	</br>
-	                         	Τεμάχια</br>
-	                         	<button ng-click="decreaseProductItem($index)" ><i class="glyphicon glyphicon-minus"></i></button>
-	                         	<input type="number" style="width:50px;" ng-model="product.itemcount"/>
-	                         	<button ng-click="increaseProductItem($index)" ><i class="glyphicon glyphicon-plus"></i></button>
-	                        </div>
-	                        </div>
+                            <div class="col-xs-6">
+                             {{product.name}} 
+                            </div>
+                            <div class="col-xs-6">
+                                Κουτιά available : {{product.boxreverse}} </br>
+                                <button ng-click="decreaseProductBox($index)" ><i class="glyphicon glyphicon-minus"></i></button>
+                                <input min=0.0 type="number" style="width:50px;" ng-model="product.boxcount"/>
+                                <button ng-click="increaseProductBox($index)" ><i class="glyphicon glyphicon-plus"></i></button>
+                                </br>
+                                </br>
+                                Τεμάχια available : {{product.itemreverse}}</br>
+                                <button ng-click="decreaseProductItem($index)" ><i class="glyphicon glyphicon-minus"></i></button>
+                                <input type="number" style="width:50px;" ng-model="product.itemcount"/>
+                                <button ng-click="increaseProductItem($index)" ><i class="glyphicon glyphicon-plus"></i></button>
+                            </div>
+                            </div>
                         </div>
 
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
                             <li><button ng-click="gotoStep3()" type="button" class="btn btn-primary">Καταχώρηση</button></li>
                         </ul>
+
+
+                       
                     </div>
-<!-- Step 3 -->
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                        <div class="productList"  ng-repeat="product in productOrder">
+<!-- Step 4 -->
+                    <div class="tab-pane" role="tabpanel" id="complete">
+
+                         <div class="productList"  ng-repeat="product in productOrder">
                         <div class="row">
                             <div class="col-xs-6">
                              <strong>{{product.product_name}} <br>
-                             		 boxes: {{product.boxcount}} <span style="padding-left:20px;"></span> items: {{product.itemcount}}</strong>
+                                     boxes: {{product.boxcount}} <span style="padding-left:20px;"></span> items: {{product.itemcount}}</strong>
                             </div>
                         </div> 
                         </div>
@@ -108,15 +125,14 @@
                         <ul class="list-inline pull-right">
                             <li><button ng-click="submitOrder()" type="button" class="btn btn-primary btn-info-full ">Καταχώρηση Παραγγελείας Αποθήκης</button></li>
                         </ul>
-                    </div>
-<!-- Step 4 -->
-                    <div class="tab-pane" role="tabpanel" id="complete">
+
+                       <!--  
                     	<div class="container text-center">
                         
 	                        <i style="font-size: 30px;color:{{resultSubmitIconColor}};" class="{{resultSubmitIcon}}"></i>
 	                        <p>{{submitResultMessage}}</p>
                           
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </form>

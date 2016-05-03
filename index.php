@@ -49,7 +49,7 @@
             <br> 
           <div class="col-xs-12">
 
-              <button type="submit" class="btn btn-primary" name="closeInventory">Παραγγελία Πελάτη</button>
+              <a href="clientOrder.php" type="submit" class="btn btn-primary" name="closeInventory">Παραγγελία Πελάτη</button>
 
               <a href="inventoryOrder.php" class="btn btn-primary" >Παραγγελία Αποθήκης</a>
 

@@ -103,6 +103,39 @@ if($conn->query($sql) == TRUE)
   echo 'Could not create table: ' . mysql_error() . '<br>';
 }
 
+// sql to create table
+$sql = "CREATE TABLE clientOrder (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    openclose_id INT(6) UNSIGNED NOT NULL,
+    orderdate DATETIME DEFAULT NULL,
+    FOREIGN KEY (openclose_id) REFERENCES openclose(id)
+)";
+
+if($conn->query($sql) == TRUE)
+{
+  echo 'Table created successfully\n'. '<br>';
+}else{
+  echo 'Could not create table: ' . mysql_error() . '<br>';
+}
+
+// sql to create table
+$sql = "CREATE TABLE clientOrderProducts (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    clientOreder_id INT(6) UNSIGNED NOT NULL,
+    product_id INT(6) UNSIGNED NOT NULL,
+    boxbought INT(6) NOT NULL,
+    itembought INT(6) NOT NULL,
+    FOREIGN KEY (clientOreder_id) REFERENCES supplyOrder(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+)";
+
+if($conn->query($sql) == TRUE)
+{
+  echo 'Table created successfully\n'. '<br>';
+}else{
+  echo 'Could not create table: ' . mysql_error() . '<br>';
+}
+
 mysql_close($conn);
 
 ?>
