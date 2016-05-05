@@ -116,18 +116,14 @@ app.controller('clientOrderController',function($scope,$http) {
 				if ($scope.products[index].itemcount > $scope.products[index].itemreverse)
 				 {
 					var allItems = parseInt($scope.products[index].itemreverse) + ($scope.products[index].boxreverse * $scope.products[index].boxtoitem);
-					console.log("all : " + allItems);
+					//console.log("all : " + allItems);
 					allItems = allItems - ($scope.products[index].itemcount + ($scope.products[index].boxcount * $scope.products[index].boxtoitem));
-					console.log("all - ordered : " + allItems);
+					//console.log("all - ordered : " + allItems);
 					var boxes = Math.floor(allItems / $scope.products[index].boxtoitem );
-					console.log("all/boxtoitem: " + Math.floor(allItems / $scope.products[index].boxtoitem ));
+					//console.log("all/boxtoitem: " + Math.floor(allItems / $scope.products[index].boxtoitem ));
 					var items =  (allItems % $scope.products[index].boxtoitem);
-					// var itemcount = $scope.products[index].itemcount ;
 
-					// var boxes = Math.floor(itemcount / $scope.products[index].boxtoitem ) + 1 ;
-					// itemcount = itemcount % $scope.products[index].boxtoitem ;
-
-					console.log(allItems +"all     "+boxes + " b    " + items + " i ");
+					//console.log(allItems +"all     "+boxes + " b    " + items + " i ");
 				}
 				
 				
@@ -135,8 +131,10 @@ app.controller('clientOrderController',function($scope,$http) {
 				var order = {
 					product_id : $scope.products[index].id,
 					product_name : $scope.products[index].name,
-					boxcount : $scope.products[index].boxcount,
-					itemcount : $scope.products[index].itemcount
+					boxleft : boxes,
+					itemleft : items,
+					boxbought : $scope.products[index].boxcount,
+					itembought : $scope.products[index].itemcount
 				}
 
 				$scope.productOrder.push(order);
