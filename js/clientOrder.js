@@ -46,6 +46,7 @@ app.controller('clientOrderController',function($scope,$http) {
 				for (index ; index < response.data.length; ++index) {
 				    response.data[index].boxcount = 0 ;
 				    response.data[index].itemcount = 0 ;
+				    response.data[index].allAvailableItems = parseInt(response.data[index].itemreverse)+(parseInt(response.data[index].boxreverse)*parseInt(response.data[index].boxtoitem));
 				}
 
 				$scope.products = response.data ;
@@ -62,21 +63,29 @@ app.controller('clientOrderController',function($scope,$http) {
 	$scope.increaseProductBox = function(index){
 
 		if($scope.products[index].boxreverse>$scope.products[index].boxcount)
-			$scope.products[index].boxcount++;
+			{
+				$scope.products[index].boxcount++;
+				$scope.products[index].allAvailableItems -= $scope.products[index].boxtoitem ;
+			}
 
 	}
 
 	$scope.decreaseProductBox = function(index){
 
 		if($scope.products[index].boxcount > 0)
-			$scope.products[index].boxcount--;
+			{
+				$scope.products[index].boxcount--;
+				$scope.products[index].allAvailableItems += parseInt($scope.products[index].boxtoitem) ;
+			}
 
 	}
 
 	$scope.increaseProductItem = function(index){
 
-		if($scope.products[index].itemreverse>$scope.products[index].itemcount)
-			$scope.products[index].itemcount++;
+		if($scope.products[index].allAvailableItems>$scope.products[index].itemcount)
+			{
+				$scope.products[index].itemcount++;
+			}
 
 	}
 
@@ -103,6 +112,26 @@ app.controller('clientOrderController',function($scope,$http) {
 		{
 			if($scope.products[index].boxcount > 0 || $scope.products[index].itemcount >0)
 			{
+				// edw that kanw ta mathimatika gia box/item 
+				if ($scope.products[index].itemcount > $scope.products[index].itemreverse)
+				 {
+					var allItems = parseInt($scope.products[index].itemreverse) + ($scope.products[index].boxreverse * $scope.products[index].boxtoitem);
+					console.log("all : " + allItems);
+					allItems = allItems - ($scope.products[index].itemcount + ($scope.products[index].boxcount * $scope.products[index].boxtoitem));
+					console.log("all - ordered : " + allItems);
+					var boxes = Math.floor(allItems / $scope.products[index].boxtoitem );
+					console.log("all/boxtoitem: " + Math.floor(allItems / $scope.products[index].boxtoitem ));
+					var items =  (allItems % $scope.products[index].boxtoitem);
+					// var itemcount = $scope.products[index].itemcount ;
+
+					// var boxes = Math.floor(itemcount / $scope.products[index].boxtoitem ) + 1 ;
+					// itemcount = itemcount % $scope.products[index].boxtoitem ;
+
+					console.log(allItems +"all     "+boxes + " b    " + items + " i ");
+				}
+				
+				
+
 				var order = {
 					product_id : $scope.products[index].id,
 					product_name : $scope.products[index].name,

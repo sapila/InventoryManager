@@ -92,7 +92,7 @@
                                 <button ng-click="increaseProductBox($index)" ><i class="glyphicon glyphicon-plus"></i></button>
                                 </br>
                                 </br>
-                                Τεμάχια available : {{product.itemreverse}}</br>
+                                Τεμάχια available : {{product.allAvailableItems}}</br>
                                 <button ng-click="decreaseProductItem($index)" ><i class="glyphicon glyphicon-minus"></i></button>
                                 <input type="number" style="width:50px;" ng-model="product.itemcount"/>
                                 <button ng-click="increaseProductItem($index)" ><i class="glyphicon glyphicon-plus"></i></button>
