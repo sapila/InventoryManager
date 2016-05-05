@@ -63,6 +63,7 @@
                        <div class="buttonList" ng-click="clientSelection(client.id)" ng-repeat="client in clients">
 
                          {{client.firstname}}
+                         {{client.lastname}}
 
                         </div>
 
@@ -111,14 +112,21 @@
 <!-- Step 4 -->
                     <div class="tab-pane" role="tabpanel" id="complete">
 
-                         <div class="productList"  ng-repeat="product in productOrder">
+                         <div class="productList" ng-repeat="product in productOrder">
                         <div class="row">
                             <div class="col-xs-6">
                              <strong>{{product.product_name}} <br>
-                                     boxes: {{product.boxcount}} <span style="padding-left:20px;"></span> items: {{product.itemcount}}</strong>
+                                     boxes: {{product.boxbought}} <span style="padding-left:20px;"></span> items: {{product.itembought}} </strong>
+                                     <br>
+                                     price: {{product.productPrice}} €   
                             </div>
                         </div> 
                         </div>
+                        <br>
+                        Εκπτωση : <input type="number" step="0.01" ng-model="discount" style="width:50px;"/> € 
+                        <br>
+                        <div style="font-size:22px;">Total: {{ totalPrice - discount }} € </div>
+                        
                         <br>
                         <button ng-click="gotoStep1()" class="btn btn-default">Add more items <i class="glyphicon glyphicon-plus"></i></button>
 

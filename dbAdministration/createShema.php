@@ -125,7 +125,8 @@ $sql = "CREATE TABLE clientOrderProducts (
     product_id INT(6) UNSIGNED NOT NULL,
     boxbought INT(6) NOT NULL,
     itembought INT(6) NOT NULL,
-    FOREIGN KEY (clientOreder_id) REFERENCES supplyOrder(id),
+    
+    FOREIGN KEY (clientOreder_id) REFERENCES clientOrder(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 )";
 

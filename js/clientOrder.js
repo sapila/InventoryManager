@@ -3,6 +3,8 @@ var app = angular.module('clientOrder', [])
 app.controller('clientOrderController',function($scope,$http) {
 
 	$scope.productOrder = [];
+	$scope.totalPrice = 0;
+	$scope.discount = 0;
 
 	$scope.getClients = function(){
 
@@ -108,24 +110,25 @@ app.controller('clientOrderController',function($scope,$http) {
 	$scope.gotoStep3 = function(index){
 
 		var index = 0;
+	
+
 		for(index = 0 ; index < $scope.products.length ; index++ )
 		{
 			if($scope.products[index].boxcount > 0 || $scope.products[index].itemcount >0)
 			{
 				// edw that kanw ta mathimatika gia box/item 
-				if ($scope.products[index].itemcount > $scope.products[index].itemreverse)
-				 {
+			
 					var allItems = parseInt($scope.products[index].itemreverse) + ($scope.products[index].boxreverse * $scope.products[index].boxtoitem);
-					//console.log("all : " + allItems);
+					console.log("all : " + allItems);
 					allItems = allItems - ($scope.products[index].itemcount + ($scope.products[index].boxcount * $scope.products[index].boxtoitem));
-					//console.log("all - ordered : " + allItems);
+					console.log("all - ordered : " + allItems);
 					var boxes = Math.floor(allItems / $scope.products[index].boxtoitem );
-					//console.log("all/boxtoitem: " + Math.floor(allItems / $scope.products[index].boxtoitem ));
+					console.log("all/boxtoitem: " + Math.floor(allItems / $scope.products[index].boxtoitem ));
 					var items =  (allItems % $scope.products[index].boxtoitem);
 
-					//console.log(allItems +"all     "+boxes + " b    " + items + " i ");
-				}
+					console.log(allItems +"all     "+boxes + " b    " + items + " i ");
 				
+					var productPrice = ($scope.products[index].boxcount * $scope.products[index].boxprice) + ($scope.products[index].itemcount * $scope.products[index].itemprice) ;
 				
 
 				var order = {
@@ -134,9 +137,11 @@ app.controller('clientOrderController',function($scope,$http) {
 					boxleft : boxes,
 					itemleft : items,
 					boxbought : $scope.products[index].boxcount,
-					itembought : $scope.products[index].itemcount
+					itembought : $scope.products[index].itemcount,
+					productPrice : productPrice
 				}
 
+				$scope.totalPrice += productPrice ;
 				$scope.productOrder.push(order);
 			}
 
@@ -148,6 +153,18 @@ app.controller('clientOrderController',function($scope,$http) {
 
 	}
 
+	$scope.getTotalPrice = function(){
+
+		var index = 0;
+		var sum =0;
+		for(index = 0 ; index < $scope.products.length ; index++ )
+		{
+
+			sum += $scope.productOrder[index].productPrice;
+		}
+
+		return sum;
+	}
 
 	$scope.submitOrder = function(){
 
