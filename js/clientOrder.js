@@ -175,7 +175,12 @@ app.controller('clientOrderController',function($scope,$http) {
 
 		$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 
-		$http.post('api/post/submitClientOrder.php',{client:$scope.clientid,order:$scope.productOrder} )
+		$http.post('api/post/submitClientOrder.php',{
+														client:$scope.clientid,
+														totalprice: $scope.totalPrice,
+														discount: $scope.discount,
+														order:$scope.productOrder
+													} )
 		.then(function(response){
 			console.log(JSON.stringify(response));
 				// if(response.data.error){

@@ -108,6 +108,10 @@ $sql = "CREATE TABLE clientOrder (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     openclose_id INT(6) UNSIGNED NOT NULL,
     orderdate DATETIME DEFAULT NULL,
+    client_id INT(6) UNSIGNED NOT NULL,
+    totalprice  DECIMAL(10, 2) NOT NULL,
+    discount DECIMAL(10, 2) NOT NULL,
+
     FOREIGN KEY (openclose_id) REFERENCES openclose(id)
 )";
 

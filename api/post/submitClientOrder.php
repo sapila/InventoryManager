@@ -14,7 +14,8 @@ $errorFlag = false;
 
 
 
- $sql = "INSERT INTO clientOrder (openclose_id,orderdate) VALUES (".$_SESSION['openclose_id'].",now())" ;
+ $sql = "INSERT INTO clientOrder (openclose_id,orderdate,client_id,totalprice,discount)
+         VALUES (".$_SESSION['openclose_id'].",now(),".$data->client.",".$data->totalprice.",".$data->discount.")" ;
 
 
    if (!$conn->query($sql) === TRUE) {
@@ -49,7 +50,7 @@ foreach ($order as $product) {
 }
 
 
-	$arr = array('error' => $errorFlag);
+	$arr = array('error' => $errorFlag , 'test' => $data->discount);
 
 	echo json_encode($arr);
 
