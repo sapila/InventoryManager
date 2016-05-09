@@ -2,6 +2,16 @@
 <?php include 'dbConnection.php';?>
 <?php include 'menu.php';?>
   <?php
+
+//reset session variables...set openclose and openclose_id
+  $sql = "SELECT * FROM openclose WHERE id=(SELECT MAX(id) FROM openclose) ";
+  $result = $conn->query($sql);
+  $row = $result->fetch_assoc();
+  if($row["closedate"] ===null)
+  {
+    $_SESSION['inventory_open'] = true;
+    $_SESSION['openclose_id'] = $row["id"];
+  }
  
  if(isset($_POST['openInventory'])){ //check if form was submitted
   $_SESSION['inventory_open'] = true;
@@ -40,22 +50,20 @@
 
 <?php
     if(isset($_SESSION['inventory_open'])):?>
-
-            <h1>open</h1>
-      
-            <form action="" method="post">
-              <button type="submit" class="btn btn-primary" name="closeInventory">Κλείσιμο</button>
-            </form>
-            <br> 
+      <br>
+           
           <div class="col-xs-12">
-
-              <a href="clientOrder.php" type="submit" class="btn btn-primary" name="closeInventory">Παραγγελία Πελάτη</button>
-
-              <a href="inventoryOrder.php" class="btn btn-primary" >Παραγγελία Αποθήκης</a>
-
-              <button type="submit" class="btn btn-primary" name="closeInventory">Έλεγχος Αποθήκης</button>
-
+              <div style="padding:20px;background-color:#eee" class="col-xs-4">
+              <a href="clientOrder.php"  class="" name="closeInventory">Παραγγελία Πελάτη</a>
+              </div>
+              <div style="padding:20px;background-color:#eee" class="col-xs-4">
+              <a href="inventoryOrder.php" class="" >Παραγγελία Αποθήκης</a>
+              </div>
+              <div style="padding:20px;background-color:#eee" class="col-xs-4">
+              <a href="inventoryStatus.php" class="" name="closeInventory">Έλεγχος Αποθήκης</a>
+              </div>
         </div>
+
     <?php    
     else:?>
 
@@ -70,16 +78,31 @@
 
 
 
+<div class="col-xs-12">
+ <br>
+ Παραγγελεις Ημερας :
+  <?php
+  $sql = " SELECT * FROM clientOrder INNER JOIN pelates ON pelates.id = clientOrder.client_id WHERE openclose_id=" .$_SESSION['openclose_id']." ";
+  $result = $conn->query($sql);
+  //fetch tha data from the database 
+  $total = 0;
+  while($row = $result->fetch_assoc()) {
+          $price = $row["totalprice"] - $row["discount"];
+          echo "<div class='productList'>".$row["firstname"]. " " . $row["lastname"]. " <div class='text-right'>".$price." €</div></div>";
+          $total += $price;
+      }
 
-<?php
-$sql = " SELECT * FROM pelates ";
-$result = $conn->query($sql);
-//fetch tha data from the database
-while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-    }
+      echo "<div style='padding:50px;' class='text-right'>Συνολο : ".$total." €</div>";
 
-?> 
+  ?> 
+
+ </div>
+
+
+          <form action="" method="post">
+              <button type="submit" class="btn btn-primary" name="closeInventory">Κλείσιμο Ημερας</button>
+            </form>
+            <br> 
 
     </div><!-- /.container -->
 
