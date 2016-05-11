@@ -131,7 +131,7 @@
                         <button ng-click="gotoStep1()" class="btn btn-default">Add more items <i class="glyphicon glyphicon-plus"></i></button>
 
                         <ul class="list-inline pull-right">
-                            <li><button ng-click="submitOrder()" type="button" class="btn btn-primary btn-info-full ">Καταχώρηση Παραγγελείας Αποθήκης</button></li>
+                            <li><button ng-click="submitOrder()" type="button" class="btn btn-primary btn-info-full ">Καταχώρηση Παραγγελείας </button></li>
                         </ul>
 
                        <!--  

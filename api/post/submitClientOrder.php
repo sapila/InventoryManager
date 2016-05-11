@@ -50,7 +50,7 @@ foreach ($order as $product) {
 }
 
 
-	$arr = array('error' => $errorFlag , 'test' => $data->discount);
+	$arr = array('error' => $errorFlag , 'clientOrderId' => $clientOrder_id);
 
 	echo json_encode($arr);
 

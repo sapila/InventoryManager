@@ -20,8 +20,8 @@
 
 
 
-<div class="container">
- <div class="col-md-6 col-sm-offset-3">
+<div class="container ">
+ <div class=" col-md-6 col-centered">
      <h3><center><strong> Καταχώρηση νέου πελάτη </strong></center></h3>
  <form action="" method="post">
 

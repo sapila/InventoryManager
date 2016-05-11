@@ -183,20 +183,9 @@ app.controller('clientOrderController',function($scope,$http) {
 													} )
 		.then(function(response){
 			console.log(JSON.stringify(response));
-				// if(response.data.error){
-				// 	$scope.resultSubmitIcon = "glyphicon glyphicon-remove";
-				// 	$scope.resultSubmitIconColor = "red";
-				// 	$scope.submitResultMessage = "Υπηρξε κάποιο πρόβλημα.Ελέγξτε ξανά την παρααγγελία."
-				// }else{
-				// 	$scope.resultSubmitIcon = "glyphicon glyphicon-ok";
-				// 	$scope.resultSubmitIconColor = "green";
-				// 	$scope.submitResultMessage = "Η παραγγελία αποθήκης ολοκληρώθηκε"
-				// }
 				
-				// var $active = $('.wizard .nav-tabs li.active');
-		  //       $active.next().removeClass('disabled');
-		  //       nextTab($active);
-
+		  		window.location.href = "orderPrint.php?id="+response.data.clientOrderId;
+		  		
 			}, function(response){
 				console.log(JSON.stringify(response));
 			});

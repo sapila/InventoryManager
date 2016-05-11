@@ -27,6 +27,14 @@ body {
 	border-top:1px solid #ffffff;	
 	margin: 5px;
 }
+.orderList{
+	padding:10px;
+	border-left:5px solid #5588ff;
+	border-right:5px solid #5588ff;
+	border-bottom:1px solid #ffffff;
+	border-top:1px solid #ffffff;	
+	margin: 5px;
+}
 .productList:hover{
 	border-top:1px solid #ddd;
 	border-bottom:1px solid #ddd;
@@ -34,5 +42,9 @@ body {
 
 .center-block{
 	display: table;
+    margin: 0 auto;
+}
+.col-centered{
+    float: none;
     margin: 0 auto;
 }

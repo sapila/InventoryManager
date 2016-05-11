@@ -78,9 +78,9 @@
 
 
 
-<div class="col-xs-12">
+<div class="col-sm-12">
  <br>
- Παραγγελεις Ημερας :
+ Παραγγελιες Ημερας :
   <?php
   $sql = " SELECT * FROM clientOrder INNER JOIN pelates ON pelates.id = clientOrder.client_id WHERE openclose_id=" .$_SESSION['openclose_id']." ";
   $result = $conn->query($sql);
@@ -88,7 +88,7 @@
   $total = 0;
   while($row = $result->fetch_assoc()) {
           $price = $row["totalprice"] - $row["discount"];
-          echo "<div class='productList'>".$row["firstname"]. " " . $row["lastname"]. " <div class='text-right'>".$price." €</div></div>";
+          echo "<div class='orderList'><span style=''>".$row["firstname"]. " " . $row["lastname"]. " </span><span style='float:right'>".$price." €</span></div>";
           $total += $price;
       }
 
