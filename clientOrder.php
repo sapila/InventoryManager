@@ -66,8 +66,6 @@
                          {{client.lastname}}
 
                         </div>
-
-                       <li><button type="button" class="btn btn-default next-step">Next</button></li>
                     </div>
 <!-- Step 2 -->
                     <div class="tab-pane" role="tabpanel" id="step2">

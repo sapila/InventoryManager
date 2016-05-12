@@ -12,8 +12,15 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="clientOrderHistory.php">Ιστορικό Παραγγελειών</a></li>
-            <li><a href="inventoryOrderHistory.php">Ιστορικό Αποθήκης</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Ιστορικό<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="clientHistory.php">Ανα Πελατη</a></li>
+                    <li><a href="opencloseHistory.php">Ανοιγμα/Κλεισιμο</a></li>
+                    <li><a href="inventoryOrderHistory.php">Ιστορικό Αποθήκης</a></li>
+                </ul>
+             </li>
+            
              <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Διαχείρηση <span class="caret"></span></a>
                 <ul class="dropdown-menu">

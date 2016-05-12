@@ -82,13 +82,13 @@
  <br>
  Παραγγελιες Ημερας :
   <?php
-  $sql = " SELECT * FROM clientOrder INNER JOIN pelates ON pelates.id = clientOrder.client_id WHERE openclose_id=" .$_SESSION['openclose_id']." ";
+  $sql = " SELECT *,clientOrder.id AS order_id FROM clientOrder INNER JOIN pelates ON pelates.id = clientOrder.client_id WHERE openclose_id=" .$_SESSION['openclose_id']." ";
   $result = $conn->query($sql);
   //fetch tha data from the database 
   $total = 0;
   while($row = $result->fetch_assoc()) {
           $price = $row["totalprice"] - $row["discount"];
-          echo "<div class='orderList'><span style=''>".$row["firstname"]. " " . $row["lastname"]. " </span><span style='float:right'>".$price." €</span></div>";
+          echo "<div class='orderList' onclick='printOrder(".$row['order_id'].")' ><span style=''>".$row["firstname"]. " " . $row["lastname"]. " </span><span style='float:right'>".$price." €</span></div>";
           $total += $price;
       }
 
@@ -97,7 +97,12 @@
   ?> 
 
  </div>
+<script>
 
+function printOrder(id){
+  window.location.href = "orderPrint.php?id="+id;
+}
+</script>
 
           <form action="" method="post">
               <button type="submit" class="btn btn-primary" name="closeInventory">Κλείσιμο Ημερας</button>
