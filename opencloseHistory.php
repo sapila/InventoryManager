@@ -31,7 +31,7 @@ echo '</div></div>'
 <script>
 
 function clientHistoryOrders(id){
-	window.location.href = "clientHistoryOrders.php?id="+id;
+	window.location.href = "opencloseHistoryOrders.php?id="+id;
 }
 
 </script>
