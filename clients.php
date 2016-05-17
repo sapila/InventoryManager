@@ -26,16 +26,16 @@ $sql = " SELECT * FROM pelates ";
 $result = $conn->query($sql);
 //fetch tha data from the database
 while($row = $result->fetch_assoc()) {
-        echo '<div style="border-bottom:2px solid black;" class="row">';
+        echo '<div class="row productList">';
         echo '<strong><div class="col-xs-4"> ' . $row['firstname']. ' ' . $row['lastname']. ' <br>' . $row['phone']. '</div>';
         echo '<div class="col-xs-4"> ' . $row['address']. '<br> ' . $row['town']. '</div>';
         echo '<div class="col-xs-3"> ΑΦΜ:' . $row['afm']. '<br>ΔΟΥ:' . $row['doy']. '</div>';
         echo '<div class="col-xs-1">
                 <form action="" method="post">
                     <input type="hidden" value="' . $row['id']. '" name="id" />
-                    <button type="submit" class="btn btn-default" name="SubmitButton"  onclick="return confirm(\'Are you shure?\')">
+                    <div type="submit" class="btn btn-default"  name="SubmitButton"  onclick="return confirm(\'Are you shure?\')">
                         X
-                    </button>
+                    </div>
                 </form>
                </div>';
         echo '</div></strong><br>';

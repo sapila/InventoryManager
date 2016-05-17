@@ -44,7 +44,7 @@ $sql = " SELECT * FROM categories ";
 $result = $conn->query($sql);
 //fetch tha data from the database
 while($row = $result->fetch_assoc()) {
-        echo '<div style="border-bottom:2px solid black;" class="row">';
+        echo '<div class="row orderList">';
         echo '<strong><div class="col-xs-10"> '. $row['name']. '</div>';
         echo '<div class="col-xs-2">
                 <form action="" method="post">
@@ -54,7 +54,7 @@ while($row = $result->fetch_assoc()) {
                     </button>
                 </form>
                </div>';
-        echo '</div></strong><br>';
+        echo '</div></strong>';
     }
 
 ?>

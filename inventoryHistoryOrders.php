@@ -11,7 +11,7 @@ $openclose_id = $_GET['id'];
 	 <br>
 	 Παραγγελιες Ημερας :
 	  <?php
-	  $sql = " SELECT *,supplyOrder.id AS order_id
+	  $sql = " SELECT *,supplyOrder.id AS order_id,supplyOrderProducts.boxreverse AS boxbought,supplyOrderProducts.itemreverse AS itembought
 	  			 FROM supplyOrder 
 	  			 INNER JOIN supplyOrderProducts ON supplyOrderProducts.supplyOreder_id = supplyOrder.id
 	  			 INNER JOIN products ON products.id = supplyOrderProducts.product_id
@@ -20,14 +20,11 @@ $openclose_id = $_GET['id'];
 
 	  $result = $conn->query($sql);
 	  //fetch tha data from the database 
-	  $count = 0;
 	  while($row = $result->fetch_assoc()) {
-print_r($row);
-	          echo "<div class='orderList' onclick='printOrder(".$row['order_id'].")' ><span style=''>".$row["name"]. " " . $row["boxbought"]. " </span><span style='float:right'>€</span></div>";
-	          $total += $price;
+//print_r($row);
+	          echo "<div class='orderList'><span style='padding:5px;'>".$row["name"]. " " . $row["boxbought"]. " </span><span style='float:right;'>Κουτιά : ".$row['boxbought']."<br>Τεμάχια : ".$row['itembought']."</span><br><br></div>";
+	      
 	      }
-
-	      echo "<div style='padding:50px;' class='text-right'>Συνολο : ".$total." €</div>";
 
 	  ?> 
 
@@ -35,11 +32,4 @@ print_r($row);
 
  </div>
 
-<script>
-
-function printOrder(id){
-	 window.location.href = "orderPrint.php?id="+id;
-}
-
-</script>
 <?php include 'footer.php';?>

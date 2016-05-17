@@ -35,7 +35,7 @@ $sql = " SELECT products.id ,
 $result = $conn->query($sql);
 //fetch tha data from the database
 while($row = $result->fetch_assoc()) {
-        echo '<div style="border-bottom:2px solid black;" class="row">';
+        echo '<div class="row productList">';
         echo '<strong><div class="col-xs-4"> ' . $row['name']. '</div>';
         echo '<div class="col-xs-4"> ' . $row['category']. '</div>';
         echo '<div class="col-xs-3"> Πακέτο : ' . $row['boxprice']. '<br>Τεμάχιο :  ' . $row['itemprice']. '<br> τεμ/πακ :' . $row['boxtoitem']. '</div>';
@@ -47,7 +47,7 @@ while($row = $result->fetch_assoc()) {
                     </button>
                 </form>
                </div>';
-        echo '</div></strong><br>';
+        echo '</div></strong>';
     }
 
 ?>
