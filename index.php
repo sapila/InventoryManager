@@ -52,16 +52,16 @@
     if(isset($_SESSION['inventory_open'])):?>
       <br>
            
-          <div class="col-xs-12">
-              <div style="padding:20px;background-color:#eee" class="col-xs-4">
-              <a href="clientOrder.php"  class="" name="closeInventory">Παραγγελία Πελάτη</a>
+         <div class="row">
+              <div style="padding:20px;background-color:#eee;display:inline;" class="col-xs-4">
+                <a href="clientOrder.php"  class="" >Παραγγελία Πελάτη</a>
               </div>
-              <div style="padding:20px;background-color:#eee" class="col-xs-4">
-              <a href="inventoryOrder.php" class="" >Παραγγελία Αποθήκης</a>
+              <div style="padding:20px;background-color:#eee;display:inline;" class="col-xs-4">
+                <a href="inventoryOrder.php" class="" >Παραγγελία Αποθήκης</a>
               </div>
-              <div style="padding:20px;background-color:#eee" class="col-xs-4">
-              <a href="inventoryStatus.php" class="" name="closeInventory">Έλεγχος Αποθήκης</a>
-              </div>
+              <div style="padding:20px;background-color:#eee;display:inline;" class="col-xs-4">
+                <a href="inventoryStatus.php" class="" >Έλεγχος Αποθήκης</a>
+           </div> 
         </div>
 
     <?php    
