@@ -46,7 +46,7 @@
    </fieldset> 
    
    <fieldset class="form-group">
-    <label for="address">Διεύθηνση</label>
+    <label for="address">Διεύθυνση</label>
     <input class="form-control" type="text" name="address"/>
    </fieldset> 
    
