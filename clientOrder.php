@@ -63,7 +63,7 @@
                        <div class="buttonList" ng-click="clientSelection(client.id)" ng-repeat="client in clients">
 
                          {{client.firstname}}
-                         {{client.lastname}}
+                         {{client.lastname}} <span style="padding-left:10px">{{client.type}}</span>
 
                         </div>
                     </div>

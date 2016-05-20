@@ -5,6 +5,7 @@ $sql = "CREATE TABLE pelates (
     id INT(6) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
+    type VARCHAR(30) NOT NULL,
     town VARCHAR(30) NOT NULL,
     address VARCHAR(30) NOT NULL,
     phone VARCHAR(30) NOT NULL,

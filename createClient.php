@@ -5,9 +5,9 @@
  
  if(isset($_POST['SubmitButton'])){ //check if form was submitted
  
- $sql = "INSERT INTO pelates (firstname, lastname, town, address, phone, afm, doy)
+ $sql = "INSERT INTO pelates (firstname, lastname, town, address, phone, afm, doy, type)
         VALUES ('".$_POST['firstname']."', '".$_POST['lastname']."', '".$_POST['town']."',
-        '".$_POST['address']."','".$_POST['phone']."','".$_POST['afm']."','".$_POST['doy']."')";
+        '".$_POST['address']."','".$_POST['phone']."','".$_POST['afm']."','".$_POST['doy']."','".$_POST['type']."')";
 
     if ($conn->query($sql) === TRUE) {
         echo '<div class="alert alert-success"> Η καταχώρηση ηταν επιτυχής </div>';
@@ -33,6 +33,11 @@
     <fieldset class="form-group">
     <label for="lastname">Επίθετο</label>
     <input class="form-control" type="text" name="lastname"/>
+   </fieldset> 
+
+   <fieldset class="form-group">
+    <label for="type">Τύπος Επιχείρησης</label>
+    <input class="form-control" type="text" name="type"/>
    </fieldset> 
    
     <fieldset class="form-group">

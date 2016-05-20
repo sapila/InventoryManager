@@ -27,7 +27,7 @@ $result = $conn->query($sql);
 //fetch tha data from the database
 while($row = $result->fetch_assoc()) {
         echo '<div class="row productList">';
-        echo '<strong><div class="col-xs-4"> ' . $row['firstname']. ' ' . $row['lastname']. ' <br>' . $row['phone']. '</div>';
+        echo '<strong><div class="col-xs-4"> ' . $row['firstname']. ' ' . $row['lastname']. '<br> ' . $row['type']. '<br>' . $row['phone']. '</div>';
         echo '<div class="col-xs-4"> ' . $row['address']. '<br> ' . $row['town']. '</div>';
         echo '<div class="col-xs-3"> ΑΦΜ:' . $row['afm']. '<br>ΔΟΥ:' . $row['doy']. '</div>';
         echo '<div class="col-xs-1">

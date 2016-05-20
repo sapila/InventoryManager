@@ -10,7 +10,7 @@ $result = $conn->query($sql);
 echo '<div class="container">
 		<div class="col-sm-12">';
 while($row = $result->fetch_assoc()) {
-         echo "<div class='orderList' onclick='clientHistoryOrders(".$row['id'].")' ><span style=''>".$row["firstname"]. " " . $row["lastname"]. " </span><span style='float:right'>".$row['town'] ." ".$row['address']." </span></div>";
+         echo "<div class='orderList' onclick='clientHistoryOrders(".$row['id'].")' ><span style=''>".$row["firstname"]. " " . $row["lastname"]. " " . $row["type"]. "</span><span style='float:right'>".$row['town'] ." ".$row['address']." </span></div>";
 }
 echo '</div></div>'
 ?>
