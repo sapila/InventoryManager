@@ -58,7 +58,14 @@
             <form role="form">
                 <div class="tab-content">
 <!-- Step 1 -->
+
                     <div class="tab-pane active" role="tabpanel" id="step1">
+
+                    <fieldset class="form-group">
+                    <label for="firstname">Αναζήτηση</label>
+                    <input class="form-control" type="text" name="firstname" ng-model="serchClient" ng-change="search(serchClient)"/>
+                   </fieldset>
+
 
                        <div class="buttonList" ng-click="clientSelection(client.id)" ng-repeat="client in clients">
 

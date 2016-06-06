@@ -19,6 +19,17 @@ app.controller('clientOrderController',function($scope,$http) {
 
 	}
 
+	$scope.search = function(searchterm){
+		$http.get('api/get/searchClients.php?search='+searchterm)
+			.then(function(response){
+
+		console.log(JSON.stringify(response.data));
+				$scope.clients = response.data;
+			}, function(response){
+				console.log(response);
+			});
+	}
+
 	$scope.clientSelection = function(id){
 
 	$scope.clientid=id;
