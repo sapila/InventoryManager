@@ -33,8 +33,14 @@ while($row = $result->fetch_assoc()) {
         echo '<div class="col-xs-1">
                 <form action="" method="POST">
                     <input type="hidden" value="' . $row['id']. '" name="id" />
-                    <button type="submit" class="btn btn-default"  name="SubmitButton"  onclick="return confirm(\'Are you shure?\')">
+                    <button type="submit" class="btn btn-default"  name="SubmitButton"  onclick="return confirm(\'Are you sure?\')">
                         X
+                    </button>
+                </form>
+                <form action="clientEdit.php" method="GET" style="margin-top:5px;">
+                    <input type="hidden" value="' . $row['id']. '" name="id" />
+                    <button type="submit" class="btn btn-default"  name="EditButton" value="edit">
+                        Edit
                     </button>
                 </form>
                </div>';
