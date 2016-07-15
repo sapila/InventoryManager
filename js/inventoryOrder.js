@@ -97,7 +97,24 @@ app.controller('inventoryOrderController',function($scope,$http) {
 
 	}
 
+	$scope.isOnlyItem = function(product){
+		if(parseInt(product.itemprice) > 0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
 
+	$scope.isOnlyBox = function(product){
+		if(parseInt(product.boxprice) > 0 )
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	$scope.submitOrder = function(){
 
 		$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -113,7 +130,7 @@ app.controller('inventoryOrderController',function($scope,$http) {
 					$scope.resultSubmitIconColor = "green";
 					$scope.submitResultMessage = "Η παραγγελία αποθήκης ολοκληρώθηκε"
 				}
-				
+
 				var $active = $('.wizard .nav-tabs li.active');
 		        $active.next().removeClass('disabled');
 		        nextTab($active);
@@ -127,7 +144,7 @@ app.controller('inventoryOrderController',function($scope,$http) {
 
 	var init = function () {
 	   $scope.getCategories();
-	  
+
 	};
 
 	init();

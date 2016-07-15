@@ -109,6 +109,24 @@ app.controller('clientOrderController',function($scope,$http) {
 
 	}
 
+	$scope.isOnlyItem = function(product){
+		if(parseInt(product.itemprice) > 0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	$scope.isOnlyBox = function(product){
+		if(parseInt(product.boxprice) > 0 )
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	$scope.gotoStep1 = function(index){
 
 		 var $active = $('.wizard .nav-tabs li.active');
@@ -121,14 +139,14 @@ app.controller('clientOrderController',function($scope,$http) {
 	$scope.gotoStep3 = function(index){
 
 		var index = 0;
-	
+
 
 		for(index = 0 ; index < $scope.products.length ; index++ )
 		{
 			if($scope.products[index].boxcount > 0 || $scope.products[index].itemcount >0)
 			{
-				// edw that kanw ta mathimatika gia box/item 
-			
+				// edw that kanw ta mathimatika gia box/item
+
 					var allItems = parseInt($scope.products[index].itemreverse) + ($scope.products[index].boxreverse * $scope.products[index].boxtoitem);
 					console.log("all : " + allItems);
 					allItems = allItems - ($scope.products[index].itemcount + ($scope.products[index].boxcount * $scope.products[index].boxtoitem));
@@ -138,9 +156,9 @@ app.controller('clientOrderController',function($scope,$http) {
 					var items =  (allItems % $scope.products[index].boxtoitem);
 
 					console.log(allItems +"all     "+boxes + " b    " + items + " i ");
-				
+
 					var productPrice = ($scope.products[index].boxcount * $scope.products[index].boxprice) + ($scope.products[index].itemcount * $scope.products[index].itemprice) ;
-				
+
 
 				var order = {
 					product_id : $scope.products[index].id,
@@ -194,9 +212,9 @@ app.controller('clientOrderController',function($scope,$http) {
 													} )
 		.then(function(response){
 			console.log(JSON.stringify(response));
-				
+
 		  		window.location.href = "orderPrint.php?id="+response.data.clientOrderId;
-		  		
+
 			}, function(response){
 				console.log(JSON.stringify(response));
 			});
@@ -207,7 +225,7 @@ app.controller('clientOrderController',function($scope,$http) {
 	var init = function () {
 	   $scope.getCategories();
 	   $scope.getClients();
-	  
+
 	};
 
 	init();

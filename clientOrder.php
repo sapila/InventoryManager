@@ -81,28 +81,32 @@
                          {{category.name}}
                         </div>
 
-                      
+
                     </div>
 <!-- Step 3 -->
                     <div class="tab-pane" role="tabpanel" id="step3">
-                       
+
                           <div class="productList"  ng-repeat="product in products">
                         <div class="row">
                             <div class="col-xs-6">
-                             {{product.name}} 
+                             {{product.name}}
                             </div>
                             <div class="col-xs-6">
+														<div ng-show=isOnlyBox(product)>
                                 Κουτιά available : {{product.boxreverse}} </br>
                                 <button ng-click="decreaseProductBox($index)" ><i class="glyphicon glyphicon-minus"></i></button>
                                 <input min=0.0 type="number" style="width:50px;" ng-model="product.boxcount"/>
                                 <button ng-click="increaseProductBox($index)" ><i class="glyphicon glyphicon-plus"></i></button>
                                 </br>
+														</div>
+														<div ng-show=isOnlyItem(product)>
                                 </br>
                                 Τεμάχια available : {{product.allAvailableItems}}</br>
                                 <button ng-click="decreaseProductItem($index)" ><i class="glyphicon glyphicon-minus"></i></button>
                                 <input type="number" style="width:50px;" ng-model="product.itemcount"/>
                                 <button ng-click="increaseProductItem($index)" ><i class="glyphicon glyphicon-plus"></i></button>
-                            </div>
+														</div>
+														</div>
                             </div>
                         </div>
 
@@ -112,7 +116,7 @@
                         </ul>
 
 
-                       
+
                     </div>
 <!-- Step 4 -->
                     <div class="tab-pane" role="tabpanel" id="complete">
@@ -123,15 +127,15 @@
                              <strong>{{product.product_name}} <br>
                                      boxes: {{product.boxbought}} <span style="padding-left:20px;"></span> items: {{product.itembought}} </strong>
                                      <br>
-                                     price: {{product.productPrice}} €   
+                                     price: {{product.productPrice}} €
                             </div>
-                        </div> 
+                        </div>
                         </div>
                         <br>
-                        Εκπτωση : <input type="number" step="0.01" ng-model="discount" style="width:50px;"/> € 
+                        Εκπτωση : <input type="number" step="0.01" ng-model="discount" style="width:50px;"/> €
                         <br>
                         <div style="font-size:22px;">Total: {{ totalPrice - discount }} € </div>
-                        
+
                         <br>
                         <button ng-click="gotoStep1()" class="btn btn-default">Add more items <i class="glyphicon glyphicon-plus"></i></button>
 
@@ -139,12 +143,12 @@
                             <li><button ng-click="submitOrder()" type="button" class="btn btn-primary btn-info-full ">Καταχώρηση Παραγγελείας </button></li>
                         </ul>
 
-                       <!--  
+                       <!--
                     	<div class="container text-center">
-                        
+
 	                        <i style="font-size: 30px;color:{{resultSubmitIconColor}};" class="{{resultSubmitIcon}}"></i>
 	                        <p>{{submitResultMessage}}</p>
-                          
+
                         </div> -->
                     </div>
                 </div>
@@ -157,12 +161,12 @@
 $(document).ready(function () {
     //Initialize tooltips
     $('.nav-tabs > li a[title]').tooltip();
-    
+
     //Wizard
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
         var $target = $(e.target);
-    
+
         if ($target.parent().hasClass('disabled')) {
             return false;
         }
