@@ -2,11 +2,11 @@
 <?php include 'dbConnection.php';?>
 <?php include 'menu.php';?>
 
-<?php 
+<?php
 
 
-	$sql = "SELECT * FROM clientOrder 
-			INNER JOIN pelates ON clientOrder.client_id = pelates.id 
+	$sql = "SELECT * FROM clientOrder
+			INNER JOIN pelates ON clientOrder.client_id = pelates.id
 			WHERE clientOrder.id=". $_GET['id']."";
 
 	 $result = $conn->query($sql);
@@ -14,6 +14,20 @@
 	 $clientOrder = $result->fetch_assoc();
 ?>
 	 	<div class="container">
+			<div class="row">
+		<div class="col-xs-5">
+			<img src="resources/logo.png" height="100" width="300" >
+  	</div>
+		<div class="col-xs-7">
+		ΑΠΟΣΤΟΛΙΔΗΣ ΔΗΜ. ΑΝΑΣΤΑΣΙΟΣ
+		<br>ΧΟΝΔΡΙΚΟ ΕΜΠΟΡΙΟ ΚΑΤΕΨΥΓΜΕΝΩΝ ΛΑΧΑΝΙΚΩΝ
+		<br>ΚΑΙ ΕΜΠΟΡΙΟ ΧΟΝΔΡΙΚΗΣ ΠΩΛΗΣΗΣ ΠΑΓΩΤΩΝ ΕΠΙ ΠΡΟΜΗΘΕΙΑ
+		<br>ΜΟΝΟΛΟΦΟΣ-ΘΕΣΣΑΛΟΝΙΚΗΣ
+		<br>ΑΦΜ: 040528440 - ΔΟΥ: ΙΩΝΙΑΣ
+	</div>
+</div>
+<br><br><br>
+<div class="row">
 	 			<div class="col-xs-6">
 	 				<?php echo $clientOrder['firstname']. ' ' . $clientOrder['lastname'] .'<br>
 	 							ΑΦΜ : '. $clientOrder['afm'] .'<br>
@@ -23,18 +37,20 @@
 	 				<?php echo $clientOrder['address']. ' ' . $clientOrder['town'] . '<br>' . $clientOrder['phone'];?>
 	 			</div>
 	 		</div>
+		</div>
 	 		<hr>
 
-<?php 
+<?php
 
-	$sql = "SELECT * FROM clientOrderProducts 
-			INNER JOIN products ON clientOrderProducts.product_id = products.id 
+	$sql = "SELECT * FROM clientOrderProducts
+			INNER JOIN products ON clientOrderProducts.product_id = products.id
 			WHERE clientOreder_id=".$_GET['id'];
 
 	 $result = $conn->query($sql);
 
 	 echo '<div class="container">
 	 		<div class="col-xs-12"><br>';
+
 
 		  while($row = $result->fetch_assoc()) {
 		  	 echo '<div class="row">';
