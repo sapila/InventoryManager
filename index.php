@@ -12,7 +12,7 @@
     $_SESSION['inventory_open'] = true;
     $_SESSION['openclose_id'] = $row["id"];
   }
- 
+
  if(isset($_POST['openInventory'])){ //check if form was submitted
   $_SESSION['inventory_open'] = true;
 
@@ -27,7 +27,7 @@
     }
 
 
-} 
+}
 
  if(isset($_POST['closeInventory'])){ //check if form was submitted
 
@@ -42,7 +42,7 @@
   unset($_SESSION['openclose_id']);
   unset($_SESSION['inventory_open']);
 
-} 
+}
 
 ?>
 
@@ -51,7 +51,7 @@
 <?php
     if(isset($_SESSION['inventory_open'])):?>
       <br>
-           
+
          <div class="row">
               <div style="padding:20px;background-color:#eee;display:inline;" class="col-xs-4">
                 <a href="clientOrder.php"  class="" >Παραγγελία Πελάτη</a>
@@ -61,10 +61,10 @@
               </div>
               <div style="padding:20px;background-color:#eee;display:inline;" class="col-xs-4">
                 <a href="inventoryStatus.php" class="" >Έλεγχος Αποθήκης</a>
-           </div> 
+           </div>
         </div>
 
-    <?php    
+    <?php
     else:?>
 
         <h1>close</h1>
@@ -72,7 +72,7 @@
           <button type="submit" class="btn btn-primary" name="openInventory">Άνοιγμα</button>
         </form>
 
-    <?php endif; 
+    <?php endif;
 ?>
 
 
@@ -84,7 +84,7 @@
   <?php
   $sql = " SELECT *,clientOrder.id AS order_id FROM clientOrder INNER JOIN pelates ON pelates.id = clientOrder.client_id WHERE openclose_id=" .$_SESSION['openclose_id']." ";
   $result = $conn->query($sql);
-  //fetch tha data from the database 
+  //fetch tha data from the database
   $total = 0;
   while($row = $result->fetch_assoc()) {
           $price = $row["totalprice"] - $row["discount"];
@@ -94,7 +94,7 @@
 
       echo "<div style='padding:50px;' class='text-right'>Συνολο : ".$total." €</div>";
 
-  ?> 
+  ?>
 
  </div>
 <script>
@@ -107,7 +107,7 @@ function printOrder(id){
           <form action="" method="post">
               <button type="submit" class="btn btn-primary" name="closeInventory">Κλείσιμο Ημερας</button>
             </form>
-            <br> 
+            <br>
 
     </div><!-- /.container -->
 

@@ -13,7 +13,7 @@ $openclose_id = $_GET['id'];
 	  <?php
 	  $sql = " SELECT *,clientOrder.id AS order_id FROM clientOrder INNER JOIN pelates ON pelates.id = clientOrder.client_id WHERE openclose_id=" .$openclose_id ." ";
 	  $result = $conn->query($sql);
-	  //fetch tha data from the database 
+	  //fetch tha data from the database
 	  $total = 0;
 	  while($row = $result->fetch_assoc()) {
 	          $price = $row["totalprice"] - $row["discount"];
@@ -23,7 +23,7 @@ $openclose_id = $_GET['id'];
 
 	      echo "<div style='padding:50px;' class='text-right'>Συνολο : ".$total." €</div>";
 
-	  ?> 
+	  ?>
 
 	 </div>
 

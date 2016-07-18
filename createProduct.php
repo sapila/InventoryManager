@@ -2,9 +2,9 @@
 <?php include 'dbConnection.php';?>
 <?php include 'menu.php';?>
  <?php
- 
+
  if(isset($_POST['SubmitButton'])){ //check if form was submitted
- 
+
  $sql = "INSERT INTO products (name, boxprice, itemprice, categoryid, boxreverse, itemreverse, boxtoitem)
         VALUES ('".$_POST['name']."', '".$_POST['boxprice']."', '".$_POST['itemprice']."',
         '".$_POST['categorySelection']."',0,0,'".$_POST['boxtoitem']."')";
@@ -14,7 +14,7 @@
     } else {
         echo '<div class="alert alert-danger"> Error: ' . $sql . '<br>' . $conn->error .'</div>';
     }
-} 
+}
 
 ?>
 
@@ -40,28 +40,28 @@
     }
     echo "</select>";
 ?>
- 
-   
+
+
     <fieldset class="form-group">
-    <label for="boxprice">Τιμή κουτιού</label>
+    <label for="boxprice">Τιμή κιβωτίου</label>
     <input class="form-control" type="text" name="boxprice"/>
-   </fieldset> 
-   
+   </fieldset>
+
    <fieldset class="form-group">
-    <label for="itemprice">Τιμή τεμάχιου</label>
+    <label for="itemprice">Τιμή τεμαχίου</label>
     <input class="form-control" type="text" name="itemprice"/>
-   </fieldset> 
-   
+   </fieldset>
+
    <fieldset class="form-group">
-    <label for="boxtoitem">Τεμάχια ανα κούτα</label>
+    <label for="boxtoitem">Τεμάχια ανα κβώτιο</label>
     <input class="form-control" type="text" name="boxtoitem"/>
-   </fieldset> 
-   
-    
+   </fieldset>
+
+
     <input type="submit" class="btn btn-primary" name="SubmitButton"/>
-    
- </form>  
- </div>   
+
+ </form>
+ </div>
 </div>
 <br>
 

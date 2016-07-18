@@ -4,7 +4,7 @@
 <?php
 
  if(isset($_POST['createCategory'])){ //check if form was submitted
- 
+
  $sql = "INSERT INTO categories (name)
         VALUES ('".$_POST['category']."')";
 
@@ -13,9 +13,9 @@
     } else {
         echo '<div class="alert alert-danger"> Error: ' . $sql . '<br>' . $conn->error .'</div>';
     }
-} 
+}
 if(isset($_POST['deleteCategory'])){ //check if form was submitted
- 
+
     // sql to delete a record
     $sql = "DELETE FROM categories WHERE id=".$_POST["id"]." ";
 
@@ -29,12 +29,12 @@ if(isset($_POST['deleteCategory'])){ //check if form was submitted
 ?>
 
 <div class="container">
-  
+
 <form action="" method="post">
 <fieldset class="form-group">
     <label for="category">Όνομα κατηγορίας</label>
     <input class="form-control" type="text" name="category"/>
-   </fieldset> 
+   </fieldset>
     <button type="submit" class="btn btn-primary" name="createCategory">Καταχώρηση</button>
 </form>
 <br>

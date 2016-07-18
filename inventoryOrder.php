@@ -74,7 +74,7 @@
 	                        </div>
 	                        <div class="col-xs-6">
 														<div ng-show=isOnlyBox(product)>
-		                        	Κουτιά</br>
+		                        	Κιβώτια</br>
 		                         	<button ng-click="decreaseProductBox($index)" ><i class="glyphicon glyphicon-minus"></i></button>
 		                         	<input min=0.0 type="number" style="width:50px;" ng-model="product.boxcount"/>
 		                         	<button ng-click="increaseProductBox($index)" ><i class="glyphicon glyphicon-plus"></i></button>
@@ -102,7 +102,7 @@
                         <div class="row">
                             <div class="col-xs-6">
                              <strong>{{product.product_name}} <br>
-                             		 boxes: {{product.boxcount}} <span style="padding-left:20px;"></span> items: {{product.itemcount}}</strong>
+                             		 Κιβώτια: {{product.boxcount}} <span style="padding-left:20px;"></span> Τεμάχια: {{product.itemcount}}</strong>
                             </div>
                         </div>
                         </div>

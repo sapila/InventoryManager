@@ -2,9 +2,9 @@
 <?php include 'dbConnection.php';?>
 <?php include 'menu.php';?>
  <?php
- 
+
  if(isset($_POST['SubmitButton'])){ //check if form was submitted
- 
+
  $sql = "INSERT INTO pelates (firstname, lastname, town, address, phone, afm, doy, type)
         VALUES ('".$_POST['firstname']."', '".$_POST['lastname']."', '".$_POST['town']."',
         '".$_POST['address']."','".$_POST['phone']."','".$_POST['afm']."','".$_POST['doy']."','".$_POST['type']."')";
@@ -14,7 +14,7 @@
     } else {
         echo '<div class="alert alert-danger"> Error: ' . $sql . '<br>' . $conn->error .'</div>';
     }
-} 
+}
 
 ?>
 
@@ -29,48 +29,48 @@
     <label for="firstname">Όνομα</label>
     <input class="form-control" type="text" name="firstname"/>
    </fieldset>
-   
+
     <fieldset class="form-group">
     <label for="lastname">Επίθετο</label>
     <input class="form-control" type="text" name="lastname"/>
-   </fieldset> 
+   </fieldset>
 
    <fieldset class="form-group">
     <label for="type">Τύπος Επιχείρησης</label>
     <input class="form-control" type="text" name="type"/>
-   </fieldset> 
-   
+   </fieldset>
+
     <fieldset class="form-group">
     <label for="town">Πόλη</label>
     <input class="form-control" type="text" name="town"/>
-   </fieldset> 
-   
+   </fieldset>
+
    <fieldset class="form-group">
     <label for="address">Διεύθυνση</label>
     <input class="form-control" type="text" name="address"/>
-   </fieldset> 
-   
+   </fieldset>
+
    <fieldset class="form-group">
     <label for="phone">Τηλέφωνο</label>
     <input class="form-control" type="text" name="phone"/>
-   </fieldset> 
-   
+   </fieldset>
+
    <fieldset class="form-group">
     <label for="afm">ΑΦΜ</label>
     <input class="form-control" type="text" name="afm"/>
-   </fieldset> 
-   
+   </fieldset>
+
    <fieldset class="form-group">
     <label for="doy">ΔΟΥ</label>
     <input class="form-control" type="text" name="doy"/>
-   </fieldset> 
-   
-     
-    
+   </fieldset>
+
+
+
     <input type="submit" class="btn btn-primary" name="SubmitButton"/>
-    
- </form>  
- </div>   
+
+ </form>
+ </div>
 </div>
 <br>
 

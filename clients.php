@@ -2,9 +2,9 @@
 <?php include 'dbConnection.php';?>
 <?php include 'menu.php';?>
 <?php
- 
+
  if(isset($_POST['SubmitButton'])){ //check if form was submitted
- 
+
     // sql to delete a record
     $sql = "DELETE FROM pelates WHERE id=".$_POST["id"]." ";
 
@@ -17,8 +17,8 @@
 ?>
 
  <div class="container">
-  
-     <a class="btn btn-default" style="margin-top:5px;margin-bottom:5px;" href="createClient.php">Καταχώρηση Νέου</a> 
+
+     <a class="btn btn-default" style="margin-top:5px;margin-bottom:5px;" href="createClient.php">Καταχώρηση Νέου</a>
 <br><br>
 
 <?php
@@ -50,7 +50,7 @@ while($row = $result->fetch_assoc()) {
 ?>
 
 
- 
+
 
 
     </div><!-- /.container -->

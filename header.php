@@ -22,7 +22,7 @@ session_start();
     <![endif]-->
 
 <style type="text/css" media="print">
-    @page 
+    @page
     {
         size: auto;   /* auto is the initial value */
         margin: 0mm;  /* this affects the margin in the printer settings */
@@ -33,4 +33,3 @@ session_start();
 
   </head>
   <body>
-

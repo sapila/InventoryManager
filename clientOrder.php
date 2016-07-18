@@ -93,7 +93,7 @@
                             </div>
                             <div class="col-xs-6">
 														<div ng-show=isOnlyBox(product)>
-                                Κουτιά available : {{product.boxreverse}} </br>
+                                Κιβώτια διαθέσιμα : {{product.boxreverse}} </br>
                                 <button ng-click="decreaseProductBox($index)" ><i class="glyphicon glyphicon-minus"></i></button>
                                 <input min=0.0 type="number" style="width:50px;" ng-model="product.boxcount"/>
                                 <button ng-click="increaseProductBox($index)" ><i class="glyphicon glyphicon-plus"></i></button>
@@ -101,7 +101,7 @@
 														</div>
 														<div ng-show=isOnlyItem(product)>
                                 </br>
-                                Τεμάχια available : {{product.allAvailableItems}}</br>
+                                Τεμάχια διαθέσιμα : {{product.allAvailableItems}}</br>
                                 <button ng-click="decreaseProductItem($index)" ><i class="glyphicon glyphicon-minus"></i></button>
                                 <input type="number" style="width:50px;" ng-model="product.itemcount"/>
                                 <button ng-click="increaseProductItem($index)" ><i class="glyphicon glyphicon-plus"></i></button>
@@ -125,7 +125,7 @@
                         <div class="row">
                             <div class="col-xs-6">
                              <strong>{{product.product_name}} <br>
-                                     boxes: {{product.boxbought}} <span style="padding-left:20px;"></span> items: {{product.itembought}} </strong>
+                                     Κιβώτια: {{product.boxbought}} <span style="padding-left:20px;"></span> Τεμάχια: {{product.itembought}} </strong>
                                      <br>
                                      price: {{product.productPrice}} €
                             </div>

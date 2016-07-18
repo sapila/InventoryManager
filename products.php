@@ -2,9 +2,9 @@
 <?php include 'dbConnection.php';?>
 <?php include 'menu.php';?>
 <?php
- 
+
  if(isset($_POST['SubmitButton'])){ //check if form was submitted
- 
+
     // sql to delete a record
     $sql = "DELETE FROM products WHERE id=".$_POST["id"]." ";
 
@@ -19,8 +19,8 @@
 
 
  <div class="container">
-  
-     <a class="btn btn-default" style="margin-top:5px;margin-bottom:5px;" href="createProduct.php">Καταχώρηση Νέου</a> 
+
+     <a class="btn btn-default" style="margin-top:5px;margin-bottom:5px;" href="createProduct.php">Καταχώρηση Νέου</a>
 <br><br>
 
 <?php
@@ -31,7 +31,7 @@ $sql = " SELECT products.id ,
                 products.boxtoitem,
                 categories.name as category
           FROM products INNER JOIN categories ON products.categoryid = categories.id ";
-          
+
 $result = $conn->query($sql);
 //fetch tha data from the database
 while($row = $result->fetch_assoc()) {

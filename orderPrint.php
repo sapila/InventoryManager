@@ -61,7 +61,7 @@
 				 echo '</div>';
 				 echo '<div class="col-xs-5">';
 		          //print_r($row);
-		          echo "Κουτιά :&nbsp;&nbsp;&nbsp;&nbsp;" . $row['boxbought'] ."<br> Τεμάχια :&nbsp; " . $row["itembought"];
+		          echo "Κιβώτια :&nbsp;&nbsp;&nbsp;&nbsp;" . $row['boxbought'] ."<br> Τεμάχια :&nbsp; " . $row["itembought"];
 				 echo '</div>';
 			 echo '</div><br>';
 	      }
